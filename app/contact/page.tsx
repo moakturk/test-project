@@ -70,36 +70,6 @@ function ContactFormSection() {
   )
 }
 
-function DemoCTA() {
-  const { ref, isVisible } = useScrollAnimation()
-
-  return (
-    <section className="py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          ref={ref}
-          className={`max-w-4xl mx-auto backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-3xl p-12 text-center transition-all duration-700 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Prefer a Live Demo?
-          </h2>
-          <p className="text-lg text-gray-400 mb-8">
-            Schedule a personalized demonstration of our automation solutions with one of our experts.
-          </p>
-          <a
-            href="#"
-            className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-500/50 hover:border-primary-500 text-white font-semibold rounded-xl backdrop-blur-sm transition-all hover:bg-primary-500/10"
-          >
-            Schedule a Demo
-          </a>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-black relative">
@@ -167,8 +137,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <DemoCTA />
 
         <ModernFooter />
       </div>

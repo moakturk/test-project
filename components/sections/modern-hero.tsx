@@ -106,7 +106,7 @@ export function ModernHero() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-16 max-w-4xl mx-auto">
             {[
               { value: "10+", label: "Businesses Automated", delay: 1200 },
-              { value: "Efficiency-Driven", label: "Approach", delay: 1400 },
+              { value: "AI-Driven", label: "Solutions", delay: 1400 },
               { value: "24/7", label: "AI Support", delay: 1600 },
               { value: "50+", label: "Integrations", delay: 1800 },
             ].map((stat, i) => (

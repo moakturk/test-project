@@ -41,19 +41,16 @@ export function ModernFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative w-10 h-10">
+            <Link href="/" className="flex items-center group">
+              <div className="relative w-16 h-16 md:w-20 md:h-20">
                 <Image
                   src="/logo.svg"
-                  alt="Automexus Logo"
-                  width={40}
-                  height={40}
+                  alt="Automexus"
+                  width={80}
+                  height={80}
                   className="w-full h-full object-contain transition-transform group-hover:scale-110"
                 />
               </div>
-              <span className="font-bold text-xl text-white">
-                Automexus
-              </span>
             </Link>
             <p className="text-gray-400 leading-relaxed max-w-md">
               Transforming businesses with intelligent AI automation solutions.

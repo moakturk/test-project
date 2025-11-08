@@ -38,20 +38,17 @@ export function ModernHeader() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 md:w-12 md:h-12">
+          <Link href="/" className="flex items-center group">
+            <div className="relative w-16 h-16 md:w-20 md:h-20">
               <Image
                 src="/logo.svg"
-                alt="Automexus Logo"
-                width={48}
-                height={48}
+                alt="Automexus"
+                width={80}
+                height={80}
                 className="w-full h-full object-contain transition-transform group-hover:scale-110"
                 priority
               />
             </div>
-            <span className="font-bold text-xl md:text-2xl text-white">
-              Automexus
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

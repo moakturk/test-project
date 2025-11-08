@@ -5,18 +5,34 @@ import Image from "next/image"
 
 export function EpicIntro({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(() => onComplete(), 1200)
+    const timer = setTimeout(() => onComplete(), 1500)
     return () => clearTimeout(timer)
   }, [onComplete])
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black overflow-hidden">
       {/* Logo container - sürekli büyüyor */}
-      <div className="relative z-10">
+      <div className="relative">
+        {/* Dönen noktalar */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute left-1/2 top-1/2 w-3 h-3 -ml-1.5 -mt-1.5"
+            style={{
+              animation: `orbit 2s linear infinite, zoomOut 1.5s ease-in forwards`,
+              animationDelay: `${i * 0.125}s, 0s`,
+              transform: `rotate(${i * 45}deg) translateX(80px)`,
+            }}
+          >
+            <div className="w-full h-full bg-primary-400 rounded-full opacity-80" />
+          </div>
+        ))}
+
+        {/* Logo - bize doğru geliyor */}
         <div
-          className="animate-zoom-in"
+          className="relative z-10"
           style={{
-            animation: 'zoomIn 1.2s ease-in forwards'
+            animation: 'zoomIn 1.5s ease-in forwards'
           }}
         >
           {/* Glowing effect */}
@@ -34,51 +50,42 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
             />
           </div>
         </div>
-
-        {/* Company name */}
-        <div
-          className="text-center mt-8 opacity-0"
-          style={{
-            animation: 'fadeInOut 1.2s ease-in forwards'
-          }}
-        >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
-            Automexus
-          </h1>
-        </div>
       </div>
 
       <style jsx>{`
         @keyframes zoomIn {
           0% {
-            transform: scale(0.3);
+            transform: scale(0.5);
             opacity: 0;
           }
-          30% {
+          20% {
             opacity: 1;
           }
           100% {
-            transform: scale(100);
+            transform: scale(50);
             opacity: 0;
           }
         }
 
-        @keyframes fadeInOut {
+        @keyframes orbit {
           0% {
-            opacity: 0;
-            transform: translateY(10px);
+            transform: rotate(0deg) translateX(80px);
           }
-          20% {
+          100% {
+            transform: rotate(360deg) translateX(80px);
+          }
+        }
+
+        @keyframes zoomOut {
+          0% {
             opacity: 1;
-            transform: translateY(0);
           }
           70% {
             opacity: 1;
-            transform: translateY(0) scale(1);
           }
           100% {
             opacity: 0;
-            transform: translateY(0) scale(100);
+            transform: scale(50);
           }
         }
       `}</style>

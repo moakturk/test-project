@@ -125,7 +125,7 @@ export default function ContactPage() {
                   Check out our FAQ section for instant answers to common questions.
                 </p>
                 <a
-                  href="#"
+                  href="/faq"
                   className="text-primary-400 font-medium hover:text-primary-300 text-sm inline-flex items-center gap-1"
                 >
                   View FAQ →

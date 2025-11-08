@@ -175,7 +175,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-400 leading-relaxed">
-              We're on a mission to empower businesses worldwide with intelligent automation solutions
+              Empowering businesses worldwide with intelligent automation solutions.
             </p>
           </div>
         </div>

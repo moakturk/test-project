@@ -5,33 +5,33 @@ import Image from "next/image"
 
 export function EpicIntro({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(() => onComplete(), 2800)
+    const timer = setTimeout(() => onComplete(), 2200)
     return () => clearTimeout(timer)
   }, [onComplete])
 
   return (
-    <div className="fixed inset-0 z-[9999] overflow-hidden flex items-center justify-center">
+    <div className="fixed inset-0 z-[9999] overflow-hidden">
       {/* Siyah arka plan - yavaşça kayboluyor */}
       <div
         className="absolute inset-0 bg-black"
         style={{
-          animation: 'fadeOutBackground 2.8s ease-in forwards'
+          animation: 'fadeOutBackground 2.2s ease-in forwards'
         }}
       />
 
-      {/* A ve çember - portal görevi görüyor */}
-      <div className="relative">
+      {/* A ve çember - portal görevi görüyor - TAM ORTADA */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         {/* Dönen çember - A'nın etrafında */}
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           style={{
-            animation: 'growTowardsViewer 2.8s ease-in forwards'
+            animation: 'growTowardsViewer 2.2s ease-in forwards'
           }}
         >
           <div
             className="w-[400px] h-[400px] rounded-full border-[5px] border-primary-400/80"
             style={{
-              animation: 'rotate 4s linear infinite',
+              animation: 'rotate 3s linear infinite',
               borderStyle: 'dashed'
             }}
           />
@@ -41,11 +41,11 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
         <div
           className="relative z-10"
           style={{
-            animation: 'growTowardsViewer 2.8s ease-in forwards'
+            animation: 'growTowardsViewer 2.2s ease-in forwards'
           }}
         >
           {/* A Logosu - drop shadow sadece kenarlarında */}
-          <div className="relative w-64 h-64" style={{
+          <div className="relative w-64 h-64 -ml-32 -mt-32" style={{
             filter: 'drop-shadow(0 0 40px rgba(0, 123, 255, 0.6)) drop-shadow(0 0 80px rgba(0, 123, 255, 0.3))'
           }}>
             <Image
@@ -66,7 +66,7 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
             transform: translate(-50%, -50%) scale(1);
             opacity: 1;
           }
-          90% {
+          85% {
             opacity: 1;
           }
           100% {
@@ -88,7 +88,7 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
           0% {
             opacity: 1;
           }
-          60% {
+          50% {
             opacity: 1;
           }
           100% {

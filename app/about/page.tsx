@@ -1,5 +1,6 @@
 import { ModernHeader } from "@/components/layout/modern-header"
 import { ModernFooter } from "@/components/layout/modern-footer"
+import { AnimatedBackground } from "@/components/animated-background"
 import { Target, Eye, Award, Users } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -40,8 +41,10 @@ const stats = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black">
-      <ModernHeader />
+    <main className="min-h-screen bg-black relative">
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <ModernHeader />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
@@ -167,7 +170,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <ModernFooter />
+        <ModernFooter />
+      </div>
     </main>
   )
 }

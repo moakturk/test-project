@@ -86,7 +86,7 @@ export function ModernHero() {
               asChild
             >
               <Link href="/contact">
-                Get Started Free
+                Hemen Dönüşüme Başla
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>

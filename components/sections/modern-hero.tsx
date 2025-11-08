@@ -69,7 +69,7 @@ export function ModernHero() {
                 mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              Scale smarter. Work faster. Grow bigger.
+              Scale smarter. Work faster. Achieve more.
             </p>
           </div>
 
@@ -105,8 +105,8 @@ export function ModernHero() {
           {/* Stats with stagger animation */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-16 max-w-4xl mx-auto">
             {[
-              { value: "500+", label: "Businesses Automated", delay: 1200 },
-              { value: "87%", label: "Time Saved", delay: 1400 },
+              { value: "10+", label: "Businesses Automated", delay: 1200 },
+              { value: "Efficiency-Driven", label: "Approach", delay: 1400 },
               { value: "24/7", label: "AI Support", delay: 1600 },
               { value: "50+", label: "Integrations", delay: 1800 },
             ].map((stat, i) => (

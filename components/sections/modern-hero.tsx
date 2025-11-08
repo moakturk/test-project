@@ -105,10 +105,10 @@ export function ModernHero() {
           {/* Stats with stagger animation */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-16 max-w-4xl mx-auto">
             {[
-              { value: "10+", label: "Businesses Automated", delay: 1200 },
-              { value: "AI-Driven", label: "Solutions", delay: 1400 },
-              { value: "24/7", label: "AI Support", delay: 1600 },
-              { value: "50+", label: "Integrations", delay: 1800 },
+              { value: "10+", label: "Businesses Automated", delay: 1200, size: "text-4xl md:text-5xl" },
+              { value: "Efficiency Focused", label: "Approach", delay: 1400, size: "text-2xl md:text-3xl" },
+              { value: "24/7", label: "AI Support", delay: 1600, size: "text-4xl md:text-5xl" },
+              { value: "50+", label: "Integrations", delay: 1800, size: "text-4xl md:text-5xl" },
             ].map((stat, i) => (
               <div
                 key={i}
@@ -117,7 +117,7 @@ export function ModernHero() {
                 }`}
                 style={{ transitionDelay: `${stat.delay}ms` }}
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2 animate-fade-in">{stat.value}</div>
+                <div className={`${stat.size} font-bold text-primary-400 mb-2 animate-fade-in`}>{stat.value}</div>
                 <div className="text-sm text-gray-500">{stat.label}</div>
               </div>
             ))}

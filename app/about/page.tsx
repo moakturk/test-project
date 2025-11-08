@@ -30,10 +30,10 @@ const values = [
 ]
 
 const stats = [
-  { number: "500+", label: "Businesses Automated" },
-  { number: "87%", label: "Average Time Saved" },
-  { number: "50+", label: "Integrations" },
-  { number: "24/7", label: "Support Available" },
+  { number: "10+", label: "Businesses Automated", size: "text-4xl md:text-5xl" },
+  { number: "Efficiency Focused", label: "Approach", size: "text-2xl md:text-3xl" },
+  { number: "24/7", label: "AI Support", size: "text-4xl md:text-5xl" },
+  { number: "50+", label: "Integrations", size: "text-4xl md:text-5xl" },
 ]
 
 function MissionVision() {
@@ -148,7 +148,7 @@ function StatsCard({ stat, index }: { stat: typeof stats[0], index: number }) {
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2">{stat.number}</div>
+      <div className={`${stat.size} font-bold text-primary-400 mb-2`}>{stat.number}</div>
       <div className="text-gray-500 text-sm">{stat.label}</div>
     </div>
   )

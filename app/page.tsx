@@ -12,10 +12,6 @@ import { useState } from "react"
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true)
 
-  if (showIntro) {
-    return <EpicIntro onComplete={() => setShowIntro(false)} />
-  }
-
   return (
     <main className="min-h-screen bg-black relative">
       <AnimatedBackground />
@@ -26,6 +22,9 @@ export default function Home() {
         <ModernCTA />
         <ModernFooter />
       </div>
+
+      {/* Intro overlay - web sitesi arkada zaten var */}
+      {showIntro && <EpicIntro onComplete={() => setShowIntro(false)} />}
     </main>
   )
 }

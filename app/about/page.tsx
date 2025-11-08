@@ -1,6 +1,5 @@
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { Card, CardContent } from "@/components/ui/card"
+import { ModernHeader } from "@/components/layout/modern-header"
+import { ModernFooter } from "@/components/layout/modern-footer"
 import { Target, Eye, Award, Users } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -41,17 +40,27 @@ const stats = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <Header />
+    <main className="min-h-screen bg-black">
+      <ModernHeader />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary-600 via-secondary-600 to-primary-700 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/10 via-black to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,123,255,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,123,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,123,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              About Automexus
+            <div className="inline-block mb-4">
+              <span className="text-primary-400 text-sm font-semibold tracking-wider uppercase">About Us</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+              Building the Future of
+              <span className="block mt-2 bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+                Business Automation
+              </span>
             </h1>
-            <p className="text-xl text-blue-100 leading-relaxed">
+            <p className="text-xl text-gray-400 leading-relaxed">
               We're on a mission to empower businesses worldwide with intelligent automation solutions
             </p>
           </div>
@@ -59,47 +68,43 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <Card className="border-2 border-primary-200 shadow-lg">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center mb-6">
-                  <Target className="h-7 w-7 text-white" />
-                </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  To revolutionize how businesses operate by providing accessible, intelligent automation
-                  solutions that eliminate repetitive tasks, reduce costs, and unlock human potential for
-                  creative and strategic work.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl p-8">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center mb-6">
+                <Target className="h-7 w-7 text-primary-400" />
+              </div>
+              <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
+              <p className="text-gray-400 leading-relaxed">
+                To revolutionize how businesses operate by providing accessible, intelligent automation
+                solutions that eliminate repetitive tasks, reduce costs, and unlock human potential for
+                creative and strategic work.
+              </p>
+            </div>
 
-            <Card className="border-2 border-secondary-200 shadow-lg">
-              <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-secondary-500 to-accent-500 flex items-center justify-center mb-6">
-                  <Eye className="h-7 w-7 text-white" />
-                </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  To become the world's most trusted AI automation partner, enabling businesses of all
-                  sizes to compete on a global scale through innovative technology and exceptional service.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl p-8">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center mb-6">
+                <Eye className="h-7 w-7 text-primary-400" />
+              </div>
+              <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
+              <p className="text-gray-400 leading-relaxed">
+                To become the world's most trusted AI automation partner, enabling businesses of all
+                sizes to compete on a global scale through innovative technology and exceptional service.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+          <div className="max-w-4xl mx-auto backdrop-blur-xl bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800 rounded-2xl p-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
               Our Story
             </h2>
-            <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+            <div className="space-y-6 text-gray-400 leading-relaxed text-lg">
               <p>
                 Automexus was founded with a simple yet powerful vision: to make enterprise-grade
                 automation accessible to businesses of all sizes. We saw companies struggling with
@@ -123,21 +128,21 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
             Our Values
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => {
               const Icon = value.icon
               return (
-                <div key={index} className="text-center space-y-4">
-                  <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center mx-auto shadow-lg">
-                    <Icon className="h-8 w-8 text-white" />
+                <div key={index} className="backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl p-8 hover:border-primary-500/50 transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center mx-auto mb-6">
+                    <Icon className="h-6 w-6 text-primary-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">{value.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-xl font-semibold text-white mb-3 text-center">{value.title}</h3>
+                  <p className="text-gray-400 leading-relaxed text-sm text-center">{value.description}</p>
                 </div>
               )
             })}
@@ -146,23 +151,23 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-20 bg-gradient-to-br from-primary-600 via-secondary-600 to-primary-700 text-white">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
             Our Impact
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                <div className="text-blue-100">{stat.label}</div>
+              <div key={index} className="backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl p-8 text-center hover:border-primary-500/50 transition-all">
+                <div className="text-4xl md:text-5xl font-bold text-primary-400 mb-2">{stat.number}</div>
+                <div className="text-gray-500 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <Footer />
+      <ModernFooter />
     </main>
   )
 }

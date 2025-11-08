@@ -1,7 +1,7 @@
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
+import { ModernHeader } from "@/components/layout/modern-header"
+import { ModernFooter } from "@/components/layout/modern-footer"
 import { ContactForm } from "@/components/contact-form"
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { Mail, MapPin, Clock } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -15,12 +15,6 @@ const contactInfo = [
     title: "Email",
     details: "info@automexus.com",
     link: "mailto:info@automexus.com",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    details: "+1 (234) 567-890",
-    link: "tel:+1234567890",
   },
   {
     icon: MapPin,
@@ -38,17 +32,27 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
-      <Header />
+    <main className="min-h-screen bg-black">
+      <ModernHeader />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary-600 via-secondary-600 to-primary-700 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/10 via-black to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,123,255,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,123,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,123,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              Get in Touch
+            <div className="inline-block mb-4">
+              <span className="text-primary-400 text-sm font-semibold tracking-wider uppercase">Contact Us</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+              Let's Build Something
+              <span className="block mt-2 bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+                Amazing Together
+              </span>
             </h1>
-            <p className="text-xl text-blue-100 leading-relaxed">
+            <p className="text-xl text-gray-400 leading-relaxed">
               Ready to transform your business? We're here to help you get started
             </p>
           </div>
@@ -62,10 +66,10 @@ export default function ContactPage() {
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Contact Information
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  Get in Touch
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-gray-400">
                   Have a question or ready to automate your business? Reach out to our team.
                 </p>
               </div>
@@ -74,13 +78,15 @@ export default function ContactPage() {
                 {contactInfo.map((item, index) => {
                   const Icon = item.icon
                   const content = (
-                    <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-white transition-colors">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900 mb-1">{item.title}</div>
-                        <div className="text-gray-600">{item.details}</div>
+                    <div className="backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 hover:border-primary-500/50 rounded-xl p-6 transition-all">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center flex-shrink-0">
+                          <Icon className="h-6 w-6 text-primary-400" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white mb-1">{item.title}</div>
+                          <div className="text-gray-400">{item.details}</div>
+                        </div>
                       </div>
                     </div>
                   )
@@ -96,14 +102,14 @@ export default function ContactPage() {
               </div>
 
               {/* FAQ Link */}
-              <div className="bg-gradient-to-br from-primary-50 to-secondary-50 p-6 rounded-lg border-2 border-primary-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Quick Questions?</h3>
-                <p className="text-sm text-gray-600 mb-4">
+              <div className="backdrop-blur-xl bg-gradient-to-br from-primary-900/20 to-primary-900/10 border border-primary-500/30 rounded-xl p-6">
+                <h3 className="font-semibold text-white mb-2">Quick Questions?</h3>
+                <p className="text-sm text-gray-400 mb-4">
                   Check out our FAQ section for instant answers to common questions.
                 </p>
                 <a
                   href="#"
-                  className="text-primary-600 font-medium hover:text-primary-700 text-sm"
+                  className="text-primary-400 font-medium hover:text-primary-300 text-sm inline-flex items-center gap-1"
                 >
                   View FAQ →
                 </a>
@@ -118,29 +124,27 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map or Additional CTA */}
-      <section className="py-20 bg-white">
+      {/* Additional CTA */}
+      <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <div className="max-w-4xl mx-auto backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-3xl p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Prefer a Live Demo?
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-400 mb-8">
               Schedule a personalized demonstration of our automation solutions with one of our experts.
             </p>
-            <div className="pt-4">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary-500 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors"
-              >
-                Schedule a Demo
-              </a>
-            </div>
+            <a
+              href="#"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-500/50 hover:border-primary-500 text-white font-semibold rounded-xl backdrop-blur-sm transition-all hover:bg-primary-500/10"
+            >
+              Schedule a Demo
+            </a>
           </div>
         </div>
       </section>
 
-      <Footer />
+      <ModernFooter />
     </main>
   )
 }

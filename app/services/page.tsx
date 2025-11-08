@@ -1,14 +1,12 @@
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { ModernHeader } from "@/components/layout/modern-header"
+import { ModernFooter } from "@/components/layout/modern-footer"
 import { Bot, TrendingUp, Users, Database, Workflow, Code, CheckCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Comprehensive AI automation services including process automation, marketing automation, CRM solutions, and more.",
+  description: "Comprehensive AI automation services for modern businesses",
 }
 
 const services = [
@@ -18,12 +16,11 @@ const services = [
     description: "Streamline your business operations with intelligent workflow automation that eliminates repetitive tasks and reduces human error.",
     features: [
       "Automated workflow orchestration",
-      "Document processing & data extraction",
+      "Document processing & extraction",
       "Email & notification automation",
       "Task scheduling & management",
       "Integration with existing tools",
     ],
-    color: "from-blue-500 to-blue-600",
   },
   {
     icon: TrendingUp,
@@ -36,7 +33,6 @@ const services = [
       "Analytics & performance tracking",
       "A/B testing & optimization",
     ],
-    color: "from-purple-500 to-purple-600",
   },
   {
     icon: Users,
@@ -49,7 +45,6 @@ const services = [
       "Sales pipeline automation",
       "Customer data enrichment",
     ],
-    color: "from-green-500 to-green-600",
   },
   {
     icon: Database,
@@ -62,7 +57,6 @@ const services = [
       "Data visualization",
       "Custom KPI tracking",
     ],
-    color: "from-orange-500 to-orange-600",
   },
   {
     icon: Bot,
@@ -71,11 +65,10 @@ const services = [
     features: [
       "Natural language processing",
       "Multi-language support",
-      "Integration with knowledge bases",
+      "Knowledge base integration",
       "Sentiment analysis",
       "Seamless human handoff",
     ],
-    color: "from-pink-500 to-pink-600",
   },
   {
     icon: Code,
@@ -88,33 +81,42 @@ const services = [
       "Industry-specific solutions",
       "Dedicated support & training",
     ],
-    color: "from-indigo-500 to-indigo-600",
   },
 ]
 
-export default function ServicesPage() {
+export default function ModernServicesPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
-      <Header />
+    <main className="min-h-screen bg-black">
+      <ModernHeader />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary-600 via-secondary-600 to-primary-700 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/10 via-black to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,123,255,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,123,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,123,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              Our Services
+            <div className="inline-block mb-4">
+              <span className="text-primary-400 text-sm font-semibold tracking-wider uppercase">Our Services</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+              Automation
+              <span className="block mt-2 bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+                Solutions
+              </span>
             </h1>
-            <p className="text-xl text-blue-100 leading-relaxed">
-              Comprehensive AI automation solutions to transform every aspect of your business operations
+            <p className="text-xl text-gray-400 leading-relaxed">
+              Comprehensive AI-powered solutions to transform every aspect of your business operations
             </p>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
+          <div className="space-y-32">
             {services.map((service, index) => {
               const Icon = service.icon
               const isEven = index % 2 === 0
@@ -122,34 +124,34 @@ export default function ServicesPage() {
               return (
                 <div
                   key={index}
-                  className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
+                  className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-20 items-center`}
                 >
-                  {/* Icon & Title */}
+                  {/* Icon & Content */}
                   <div className="flex-1 space-y-6">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
-                      <Icon className="h-8 w-8 text-white" />
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center">
+                      <Icon className="h-8 w-8 text-primary-400" />
                     </div>
                     <div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         {service.title}
                       </h2>
-                      <p className="text-lg text-gray-600 leading-relaxed">
+                      <p className="text-lg text-gray-400 leading-relaxed mb-8">
                         {service.description}
                       </p>
                     </div>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <CheckCircle className="h-6 w-6 text-primary-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-300">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Placeholder Image */}
+                  {/* Visual Element */}
                   <div className="flex-1 w-full">
-                    <div className={`aspect-video rounded-2xl bg-gradient-to-br ${service.color} opacity-20 shadow-xl`} />
+                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-500/10 to-primary-900/10 border border-gray-800 backdrop-blur-sm" />
                   </div>
                 </div>
               )
@@ -159,30 +161,27 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-br from-primary-50 to-secondary-50 border-2 border-primary-200">
-            <CardHeader className="text-center pb-6">
-              <CardTitle className="text-3xl md:text-4xl mb-4">
-                Ready to Get Started?
-              </CardTitle>
-              <CardDescription className="text-lg text-gray-600">
-                Let's discuss how our automation solutions can transform your business
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center">
-              <Button variant="gradient" size="xl" asChild>
-                <Link href="/contact">
-                  Contact Us Today
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+          <div className="max-w-4xl mx-auto backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-3xl p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-gray-400 mb-8">
+              Let's discuss how our automation solutions can transform your business
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 transition-all hover:scale-105"
+            >
+              Contact Us Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      <Footer />
+      <ModernFooter />
     </main>
   )
 }

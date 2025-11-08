@@ -1,19 +1,17 @@
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { Hero } from "@/components/sections/hero"
-import { ServicesOverview } from "@/components/sections/services-overview"
-import { Features } from "@/components/sections/features"
-import { CTA } from "@/components/sections/cta"
+import { ModernHeader } from "@/components/layout/modern-header"
+import { ModernFooter } from "@/components/layout/modern-footer"
+import { ModernHero } from "@/components/sections/modern-hero"
+import { ModernServices } from "@/components/sections/modern-services"
+import { ModernCTA } from "@/components/sections/modern-cta"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <ServicesOverview />
-      <Features />
-      <CTA />
-      <Footer />
+    <main className="min-h-screen bg-black">
+      <ModernHeader />
+      <ModernHero />
+      <ModernServices />
+      <ModernCTA />
+      <ModernFooter />
     </main>
   )
 }

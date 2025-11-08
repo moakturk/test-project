@@ -1,14 +1,11 @@
+"use client"
+
 import { ModernHeader } from "@/components/layout/modern-header"
 import { ModernFooter } from "@/components/layout/modern-footer"
 import { AnimatedBackground } from "@/components/animated-background"
 import { ContactForm } from "@/components/contact-form"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Mail, MapPin, Clock } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with Automexus. We're here to help you transform your business with AI automation.",
-}
 
 const contactInfo = [
   {
@@ -30,6 +27,78 @@ const contactInfo = [
     link: null,
   },
 ]
+
+function ContactInfoCard({ item, index }: { item: typeof contactInfo[0], index: number }) {
+  const { ref, isVisible } = useScrollAnimation()
+  const Icon = item.icon
+
+  const content = (
+    <div
+      ref={ref}
+      className={`backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 hover:border-primary-500/50 rounded-xl p-6 transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+      }`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div className="flex items-start space-x-4">
+        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center flex-shrink-0">
+          <Icon className="h-6 w-6 text-primary-400" />
+        </div>
+        <div>
+          <div className="font-semibold text-white mb-1">{item.title}</div>
+          <div className="text-gray-400">{item.details}</div>
+        </div>
+      </div>
+    </div>
+  )
+
+  return item.link ? <a href={item.link}>{content}</a> : content
+}
+
+function ContactFormSection() {
+  const { ref, isVisible } = useScrollAnimation()
+
+  return (
+    <div
+      ref={ref}
+      className={`lg:col-span-2 transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+      }`}
+    >
+      <ContactForm />
+    </div>
+  )
+}
+
+function DemoCTA() {
+  const { ref, isVisible } = useScrollAnimation()
+
+  return (
+    <section className="py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          ref={ref}
+          className={`max-w-4xl mx-auto backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-3xl p-12 text-center transition-all duration-700 ${
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Prefer a Live Demo?
+          </h2>
+          <p className="text-lg text-gray-400 mb-8">
+            Schedule a personalized demonstration of our automation solutions with one of our experts.
+          </p>
+          <a
+            href="#"
+            className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-500/50 hover:border-primary-500 text-white font-semibold rounded-xl backdrop-blur-sm transition-all hover:bg-primary-500/10"
+          >
+            Schedule a Demo
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function ContactPage() {
   return (
@@ -74,30 +143,9 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-6">
-                {contactInfo.map((item, index) => {
-                  const Icon = item.icon
-                  const content = (
-                    <div className="backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 hover:border-primary-500/50 rounded-xl p-6 transition-all">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500/20 to-primary-600/20 border border-primary-500/30 flex items-center justify-center flex-shrink-0">
-                          <Icon className="h-6 w-6 text-primary-400" />
-                        </div>
-                        <div>
-                          <div className="font-semibold text-white mb-1">{item.title}</div>
-                          <div className="text-gray-400">{item.details}</div>
-                        </div>
-                      </div>
-                    </div>
-                  )
-
-                  return item.link ? (
-                    <a key={index} href={item.link}>
-                      {content}
-                    </a>
-                  ) : (
-                    <div key={index}>{content}</div>
-                  )
-                })}
+                {contactInfo.map((item, index) => (
+                  <ContactInfoCard key={index} item={item} index={index} />
+                ))}
               </div>
 
               {/* FAQ Link */}
@@ -115,33 +163,12 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <ContactForm />
-            </div>
+            <ContactFormSection />
           </div>
         </div>
       </section>
 
-      {/* Additional CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto backdrop-blur-xl bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-3xl p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Prefer a Live Demo?
-            </h2>
-            <p className="text-lg text-gray-400 mb-8">
-              Schedule a personalized demonstration of our automation solutions with one of our experts.
-            </p>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-500/50 hover:border-primary-500 text-white font-semibold rounded-xl backdrop-blur-sm transition-all hover:bg-primary-500/10"
-            >
-              Schedule a Demo
-            </a>
-          </div>
-        </div>
-      </section>
+      <DemoCTA />
 
         <ModernFooter />
       </div>

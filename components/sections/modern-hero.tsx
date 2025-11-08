@@ -85,7 +85,7 @@ export function ModernHero() {
               className="group bg-primary-500 hover:bg-primary-600 shadow-lg shadow-primary-500/50 hover:shadow-primary-500/70 transition-all hover:scale-105 active:scale-95"
               asChild
             >
-              <Link href="/contact">
+              <Link href="/contact" className="flex items-center whitespace-nowrap">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>

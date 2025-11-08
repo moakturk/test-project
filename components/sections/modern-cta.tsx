@@ -19,20 +19,20 @@ export function ModernCTA() {
             }`}
           >
             <div className="text-center space-y-8">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Ready to Transform
-                <span className="block mt-2 bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-white">Ready to Transform </span>
+                <span className="bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
                   Your Business?
                 </span>
               </h2>
 
               <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
-                Join hundreds of companies automating their way to success
+                Join the companies beginning their transformation on the path to success.
               </p>
 
               {/* Benefits */}
               <div className="flex flex-wrap items-center justify-center gap-6 text-gray-300 pt-4">
-                {["14-day free trial", "No credit card required", "Cancel anytime"].map((benefit, i) => (
+                {["Custom analysis & strategy", "Scalable solutions", "Dedicated expert support"].map((benefit, i) => (
                   <div
                     key={benefit}
                     className={`flex items-center gap-2 transition-all duration-500 ${
@@ -57,7 +57,7 @@ export function ModernCTA() {
                   href="/contact"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg shadow-primary-500/50 hover:shadow-primary-500/70 transition-all hover:scale-105"
                 >
-                  Get Started Free
+                  Get Started
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link

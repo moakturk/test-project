@@ -39,13 +39,13 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
 
         {/* A logosu - kapı/portal (içi boş, web sitesi görünüyor) */}
         <div
-          className="relative z-10"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
           style={{
             animation: 'growTowardsViewer 2.2s ease-in forwards'
           }}
         >
           {/* A Logosu - drop shadow sadece kenarlarında */}
-          <div className="relative w-64 h-64 -ml-32 -mt-32" style={{
+          <div className="relative w-64 h-64" style={{
             filter: 'drop-shadow(0 0 40px rgba(0, 123, 255, 0.6)) drop-shadow(0 0 80px rgba(0, 123, 255, 0.3))'
           }}>
             <Image

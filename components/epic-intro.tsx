@@ -10,7 +10,7 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
   }, [onComplete])
 
   return (
-    <div className="fixed inset-0 z-[9999] overflow-hidden">
+    <div className="fixed inset-0 z-[9999] overflow-hidden flex items-center justify-center">
       {/* Siyah arka plan - yavaşça kayboluyor */}
       <div
         className="absolute inset-0 bg-black"
@@ -20,45 +20,42 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
       />
 
       {/* A ve çember - portal görevi görüyor */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative">
-          {/* Dönen çember - A'nın etrafında */}
+      <div className="relative">
+        {/* Dönen çember - A'nın etrafında */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            animation: 'growTowardsViewer 2.8s ease-in forwards'
+          }}
+        >
           <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="w-[400px] h-[400px] rounded-full border-[5px] border-primary-400/80"
             style={{
-              animation: 'growTowardsViewer 2.8s ease-in forwards'
+              animation: 'rotate 4s linear infinite',
+              borderStyle: 'dashed'
             }}
-          >
-            <div
-              className="w-96 h-96 rounded-full border-[5px] border-primary-400/80"
-              style={{
-                animation: 'rotate 4s linear infinite',
-                borderStyle: 'dashed'
-              }}
+          />
+        </div>
+
+        {/* A logosu - kapı/portal (içi boş, web sitesi görünüyor) */}
+        <div
+          className="relative z-10"
+          style={{
+            animation: 'growTowardsViewer 2.8s ease-in forwards'
+          }}
+        >
+          {/* A Logosu - drop shadow sadece kenarlarında */}
+          <div className="relative w-64 h-64" style={{
+            filter: 'drop-shadow(0 0 40px rgba(0, 123, 255, 0.6)) drop-shadow(0 0 80px rgba(0, 123, 255, 0.3))'
+          }}>
+            <Image
+              src="/animasyon_logo.svg"
+              alt="Automexus"
+              width={256}
+              height={256}
+              className="w-full h-full object-contain"
+              priority
             />
-          </div>
-
-          {/* A logosu - kapı/portal (içinden web sitesi görünecek) */}
-          <div
-            className="relative z-10"
-            style={{
-              animation: 'growTowardsViewer 2.8s ease-in forwards'
-            }}
-          >
-            {/* Glowing effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600 rounded-full blur-3xl opacity-30" />
-
-            {/* A Logosu */}
-            <div className="relative w-80 h-80">
-              <Image
-                src="/animasyon_logo.svg"
-                alt="Automexus"
-                width={320}
-                height={320}
-                className="w-full h-full object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
           </div>
         </div>
       </div>

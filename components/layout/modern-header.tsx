@@ -36,15 +36,15 @@ export function ModernHeader() {
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <div className="relative w-16 h-16 md:w-20 md:h-20">
+            <div className="relative w-24 h-24 md:w-28 md:h-28">
               <Image
                 src="/logo.svg"
                 alt="Automexus"
-                width={80}
-                height={80}
+                width={112}
+                height={112}
                 className="w-full h-full object-contain transition-transform group-hover:scale-110"
                 priority
               />

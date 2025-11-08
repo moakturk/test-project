@@ -6,6 +6,7 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Bot, TrendingUp, Users, Database, Workflow, Code, CheckCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const services = [
   {
@@ -151,7 +152,19 @@ function ServiceItem({ service, index }: { service: typeof services[0], index: n
 
       {/* Visual Element */}
       <div className="flex-1 w-full">
-        <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-500/10 to-primary-900/10 border border-gray-800 backdrop-blur-sm" />
+        {index === 0 ? (
+          <div className="aspect-video rounded-2xl overflow-hidden border border-gray-800 backdrop-blur-sm">
+            <Image
+              src="/gorsel.jpeg"
+              alt={service.title}
+              width={800}
+              height={450}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-500/10 to-primary-900/10 border border-gray-800 backdrop-blur-sm" />
+        )}
       </div>
     </div>
   )

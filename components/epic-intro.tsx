@@ -5,34 +5,33 @@ import Image from "next/image"
 
 export function EpicIntro({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(() => onComplete(), 1500)
+    const timer = setTimeout(() => onComplete(), 1800)
     return () => clearTimeout(timer)
   }, [onComplete])
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black overflow-hidden">
-      {/* Logo container - sürekli büyüyor */}
+      {/* Logo ve çember container */}
       <div className="relative">
-        {/* Dönen noktalar */}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute left-1/2 top-1/2 w-3 h-3 -ml-1.5 -mt-1.5"
+        {/* Dönen ve genişleyen çember */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            animation: 'ringExpand 1.8s ease-in forwards'
+          }}
+        >
+          <div className="w-48 h-48 rounded-full border-4 border-primary-400/80"
             style={{
-              animation: `orbit 2s linear infinite, zoomOut 1.5s ease-in forwards`,
-              animationDelay: `${i * 0.125}s, 0s`,
-              transform: `rotate(${i * 45}deg) translateX(80px)`,
+              animation: 'rotate 2s linear infinite'
             }}
-          >
-            <div className="w-full h-full bg-primary-400 rounded-full opacity-80" />
-          </div>
-        ))}
+          />
+        </div>
 
-        {/* Logo - bize doğru geliyor */}
+        {/* A sembolü - bize doğru geliyor */}
         <div
           className="relative z-10"
           style={{
-            animation: 'zoomIn 1.5s ease-in forwards'
+            animation: 'zoomIn 1.8s ease-in forwards'
           }}
         >
           {/* Glowing effect */}
@@ -58,34 +57,35 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
             transform: scale(0.5);
             opacity: 0;
           }
-          20% {
+          15% {
             opacity: 1;
           }
           100% {
-            transform: scale(50);
+            transform: scale(60);
             opacity: 0;
           }
         }
 
-        @keyframes orbit {
+        @keyframes rotate {
           0% {
-            transform: rotate(0deg) translateX(80px);
+            transform: rotate(0deg);
           }
           100% {
-            transform: rotate(360deg) translateX(80px);
+            transform: rotate(360deg);
           }
         }
 
-        @keyframes zoomOut {
+        @keyframes ringExpand {
           0% {
-            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
           }
-          70% {
+          15% {
             opacity: 1;
           }
           100% {
+            transform: translate(-50%, -50%) scale(60);
             opacity: 0;
-            transform: scale(50);
           }
         }
       `}</style>

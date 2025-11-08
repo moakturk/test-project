@@ -1,0 +1,131 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0a0a0a"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="cGrad1" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#007bff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#0056b3;stop-opacity:0.1" />
+    </linearGradient>
+    <radialGradient id="cGrad2" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#4da3ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#007bff;stop-opacity:0.1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Central CRM hub -->
+  <g transform="translate(400, 225)">
+    <circle r="80" fill="url(#cGrad2)" stroke="#007bff" stroke-width="3"/>
+    <circle r="60" fill="none" stroke="#4da3ff" stroke-width="2" opacity="0.6">
+      <animate attributeName="r" values="60;65;60" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- CRM icon -->
+    <circle r="25" fill="none" stroke="#4da3ff" stroke-width="3"/>
+    <circle cx="0" cy="-10" r="6" fill="#4da3ff"/>
+    <path d="M-8 0 Q0 8 8 0" fill="none" stroke="#4da3ff" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Customer nodes -->
+  <!-- Top -->
+  <g transform="translate(400, 80)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="0" y1="35" x2="0" y2="110" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Top Right -->
+  <g transform="translate(580, 125)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="-35" y1="25" x2="-110" y2="60" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Right -->
+  <g transform="translate(620, 225)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="-35" y1="0" x2="-105" y2="0" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.4s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Bottom Right -->
+  <g transform="translate(580, 325)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="-35" y1="-25" x2="-110" y2="-60" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.6s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Bottom -->
+  <g transform="translate(400, 370)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="0" y1="-35" x2="0" y2="-110" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.8s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Bottom Left -->
+  <g transform="translate(220, 325)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="35" y1="-25" x2="110" y2="-60" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Left -->
+  <g transform="translate(180, 225)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="35" y1="0" x2="105" y2="0" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Top Left -->
+  <g transform="translate(220, 125)">
+    <circle r="35" fill="url(#cGrad1)" stroke="#007bff" stroke-width="2"/>
+    <circle r="12" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cy="-6" r="4" fill="#4da3ff"/>
+    <circle cy="4" r="6" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <!-- Connection line -->
+    <line x1="35" y1="25" x2="110" y2="60" stroke="#007bff" stroke-width="2" opacity="0.4" stroke-dasharray="5,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="2.4s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Pulse effect from center -->
+  <circle cx="400" cy="225" r="80" fill="none" stroke="#4da3ff" stroke-width="2" opacity="0">
+    <animate attributeName="r" values="80;120;160" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>

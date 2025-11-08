@@ -1,0 +1,124 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0a0a0a"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="dGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007bff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#00a3ff;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="dGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#007bff;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#4da3ff;stop-opacity:0.7" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dashboard container -->
+  <rect x="80" y="60" width="640" height="330" rx="15" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="80" y="60" width="640" height="40" rx="15" fill="url(#dGrad1)" opacity="0.3"/>
+
+  <!-- Header dots -->
+  <circle cx="100" cy="80" r="5" fill="#ff5555" opacity="0.7"/>
+  <circle cx="120" cy="80" r="5" fill="#ffaa55" opacity="0.7"/>
+  <circle cx="140" cy="80" r="5" fill="#55ff55" opacity="0.7"/>
+
+  <!-- Left side - Line chart -->
+  <g transform="translate(120, 140)">
+    <rect width="260" height="200" rx="8" fill="url(#dGrad1)" stroke="#007bff" stroke-width="1" opacity="0.3"/>
+
+    <!-- Chart lines -->
+    <path d="M20 160 L60 140 L100 120 L140 100 L180 80 L220 60"
+          stroke="#4da3ff"
+          stroke-width="3"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+      <animate attributeName="stroke-dasharray" values="0,300;300,0" dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <path d="M20 170 L60 160 L100 150 L140 135 L180 125 L220 115"
+          stroke="#007bff"
+          stroke-width="3"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="0.6">
+      <animate attributeName="stroke-dasharray" values="0,300;300,0" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Data points -->
+    <g fill="#4da3ff">
+      <circle cx="20" cy="160" r="4"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="60" cy="140" r="4"><animate attributeName="r" values="4;6;4" dur="2s" begin="0.2s" repeatCount="indefinite"/></circle>
+      <circle cx="100" cy="120" r="4"><animate attributeName="r" values="4;6;4" dur="2s" begin="0.4s" repeatCount="indefinite"/></circle>
+      <circle cx="140" cy="100" r="4"><animate attributeName="r" values="4;6;4" dur="2s" begin="0.6s" repeatCount="indefinite"/></circle>
+      <circle cx="180" cy="80" r="4"><animate attributeName="r" values="4;6;4" dur="2s" begin="0.8s" repeatCount="indefinite"/></circle>
+      <circle cx="220" cy="60" r="4"><animate attributeName="r" values="4;6;4" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+    </g>
+
+    <!-- Grid lines -->
+    <g stroke="#1a1a1a" stroke-width="1" opacity="0.5">
+      <line x1="0" y1="40" x2="240" y2="40"/>
+      <line x1="0" y1="80" x2="240" y2="80"/>
+      <line x1="0" y1="120" x2="240" y2="120"/>
+      <line x1="0" y1="160" x2="240" y2="160"/>
+    </g>
+  </g>
+
+  <!-- Right side - Pie chart -->
+  <g transform="translate(540, 240)">
+    <rect x="-80" y="-100" width="200" height="200" rx="8" fill="url(#dGrad1)" stroke="#007bff" stroke-width="1" opacity="0.3"/>
+
+    <!-- Pie segments -->
+    <path d="M0 0 L0 -60 A60 60 0 0 1 52 -30 Z" fill="#4da3ff" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" values="0;5;0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0 0 L52 -30 A60 60 0 0 1 52 30 Z" fill="#007bff" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" values="0;5;0" dur="2.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0 0 L52 30 A60 60 0 0 1 -52 30 Z" fill="#0056b3" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" values="0;5;0" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0 0 L-52 30 A60 60 0 0 1 0 -60 Z" fill="#003d82" opacity="0.4">
+      <animateTransform attributeName="transform" type="rotate" values="0;5;0" dur="2.6s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Center circle -->
+    <circle r="25" fill="#0a0a0a"/>
+    <circle r="20" fill="none" stroke="#4da3ff" stroke-width="2">
+      <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Top right - Stats -->
+  <g transform="translate(430, 140)">
+    <!-- Stat bars -->
+    <rect x="0" y="0" width="250" height="15" rx="7" fill="#1a1a1a"/>
+    <rect x="0" y="0" width="200" height="15" rx="7" fill="url(#dGrad2)">
+      <animate attributeName="width" values="200;210;200" dur="2s" repeatCount="indefinite"/>
+    </rect>
+
+    <rect x="0" y="30" width="250" height="15" rx="7" fill="#1a1a1a"/>
+    <rect x="0" y="30" width="170" height="15" rx="7" fill="url(#dGrad2)" opacity="0.8">
+      <animate attributeName="width" values="170;180;170" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <rect x="0" y="60" width="250" height="15" rx="7" fill="#1a1a1a"/>
+    <rect x="0" y="60" width="140" height="15" rx="7" fill="url(#dGrad2)" opacity="0.6">
+      <animate attributeName="width" values="140;150;140" dur="2.4s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Floating particles -->
+  <g opacity="0.5">
+    <circle cx="150" cy="120" r="3" fill="#4da3ff">
+      <animate attributeName="cy" values="120;115;120" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="350" r="3" fill="#007bff">
+      <animate attributeName="cy" values="350;345;350" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

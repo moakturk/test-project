@@ -20,6 +20,7 @@ const services = [
       "Task scheduling & management",
       "Integration with existing tools",
     ],
+    image: "/process-automation.svg"
   },
   {
     icon: TrendingUp,
@@ -32,6 +33,7 @@ const services = [
       "Analytics & performance tracking",
       "A/B testing & optimization",
     ],
+    image: "/marketing-automation.svg"
   },
   {
     icon: Users,
@@ -44,6 +46,7 @@ const services = [
       "Sales pipeline automation",
       "Customer data enrichment",
     ],
+    image: "/crm-automation.svg"
   },
   {
     icon: Database,
@@ -56,6 +59,7 @@ const services = [
       "Data visualization",
       "Custom KPI tracking",
     ],
+    image: "/data-analytics.svg"
   },
   {
     icon: Bot,
@@ -68,6 +72,7 @@ const services = [
       "Sentiment analysis",
       "Seamless human handoff",
     ],
+    image: "/ai-chatbot.svg"
   },
   {
     icon: Code,
@@ -80,6 +85,7 @@ const services = [
       "Industry-specific solutions",
       "Dedicated support & training",
     ],
+    image: "/custom-solutions.svg"
   },
 ]
 
@@ -152,19 +158,15 @@ function ServiceItem({ service, index }: { service: typeof services[0], index: n
 
       {/* Visual Element */}
       <div className="flex-1 w-full">
-        {index === 0 ? (
-          <div className="aspect-video rounded-2xl overflow-hidden border border-gray-800 backdrop-blur-sm">
-            <Image
-              src="/gorsel.jpeg"
-              alt={service.title}
-              width={800}
-              height={450}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ) : (
-          <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary-500/10 to-primary-900/10 border border-gray-800 backdrop-blur-sm" />
-        )}
+        <div className="aspect-video rounded-2xl overflow-hidden border border-gray-800 backdrop-blur-sm bg-gradient-to-br from-gray-900/50 to-gray-900/30">
+          <Image
+            src={service.image}
+            alt={service.title}
+            width={800}
+            height={450}
+            className="w-full h-full object-contain"
+          />
+        </div>
       </div>
     </div>
   )

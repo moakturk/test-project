@@ -1,0 +1,115 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0a0a0a"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="aGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#007bff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#0056b3;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="aGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4da3ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#007bff;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Chat window -->
+  <rect x="200" y="80" width="400" height="290" rx="15" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="200" y="80" width="400" height="40" rx="15" fill="url(#aGrad1)" opacity="0.4"/>
+
+  <!-- Header elements -->
+  <circle cx="220" cy="100" r="5" fill="#ff5555" opacity="0.7"/>
+  <circle cx="240" cy="100" r="5" fill="#ffaa55" opacity="0.7"/>
+  <circle cx="260" cy="100" r="5" fill="#55ff55" opacity="0.7"/>
+
+  <!-- User message (right) -->
+  <g transform="translate(340, 160)">
+    <rect width="220" height="50" rx="10" fill="url(#aGrad2)" opacity="0.5"/>
+    <!-- Message lines -->
+    <line x1="20" y1="18" x2="180" y2="18" stroke="#4da3ff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <line x1="20" y1="32" x2="150" y2="32" stroke="#4da3ff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- AI response (left) -->
+  <g transform="translate(240, 230)">
+    <rect width="240" height="70" rx="10" fill="url(#aGrad1)" opacity="0.4"/>
+    <!-- Message lines -->
+    <line x1="20" y1="18" x2="200" y2="18" stroke="#007bff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <line x1="20" y1="32" x2="180" y2="32" stroke="#007bff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <line x1="20" y1="46" x2="160" y2="46" stroke="#007bff" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- User message 2 (right) -->
+  <g transform="translate(380, 320)">
+    <rect width="180" height="40" rx="10" fill="url(#aGrad2)" opacity="0.5"/>
+    <!-- Message lines -->
+    <line x1="20" y1="15" x2="140" y2="15" stroke="#4da3ff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <line x1="20" y1="28" x2="110" y2="28" stroke="#4da3ff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- AI Robot Head -->
+  <g transform="translate(650, 225)">
+    <!-- Head -->
+    <rect x="-40" y="-40" width="80" height="70" rx="15" fill="url(#aGrad1)" stroke="#007bff" stroke-width="3"/>
+
+    <!-- Antenna -->
+    <line x1="0" y1="-40" x2="0" y2="-60" stroke="#4da3ff" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="0" cy="-65" r="6" fill="#4da3ff">
+      <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Eyes -->
+    <g>
+      <rect x="-25" y="-15" width="15" height="15" rx="3" fill="#4da3ff" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="10" y="-15" width="15" height="15" rx="3" fill="#4da3ff" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- Mouth (smile) -->
+    <path d="M-20 15 Q0 25 20 15" stroke="#4da3ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+    <!-- Ear pieces -->
+    <circle cx="-45" cy="0" r="8" fill="none" stroke="#007bff" stroke-width="2"/>
+    <circle cx="45" cy="0" r="8" fill="none" stroke="#007bff" stroke-width="2"/>
+  </g>
+
+  <!-- Typing indicator -->
+  <g transform="translate(240, 130)">
+    <circle cx="0" cy="0" r="4" fill="#4da3ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="15" cy="0" r="4" fill="#4da3ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30" cy="0" r="4" fill="#4da3ff" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Signal waves from robot -->
+  <g transform="translate(610, 225)">
+    <path d="M-10 -20 Q-20 0 -10 20" fill="none" stroke="#4da3ff" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M-20 -30 Q-35 0 -20 30" fill="none" stroke="#4da3ff" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" values="0;0.4;0" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Floating particles -->
+  <g opacity="0.4">
+    <circle cx="220" cy="360" r="3" fill="#007bff">
+      <animate attributeName="cy" values="360;350;360" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="580" cy="350" r="3" fill="#4da3ff">
+      <animate attributeName="cy" values="350;340;350" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

@@ -1,0 +1,187 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#0a0a0a"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="csGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007bff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#00a3ff;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="csGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4da3ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#007bff;stop-opacity:0.3" />
+    </linearGradient>
+    <radialGradient id="csGrad3" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#4da3ff;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#007bff;stop-opacity:0.1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Puzzle pieces -->
+  <!-- Top Left Piece -->
+  <g transform="translate(250, 150)">
+    <path d="M0 0 L80 0 L80 20 Q90 20 90 30 Q90 40 80 40 L80 80 L60 80 Q60 90 50 90 Q40 90 40 80 L0 80 Z"
+          fill="url(#csGrad1)"
+          stroke="#007bff"
+          stroke-width="2"
+          opacity="0.8">
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0,0; 2,-2; 0,0"
+        dur="2s"
+        repeatCount="indefinite"/>
+    </path>
+    <!-- Inner detail -->
+    <circle cx="40" cy="40" r="15" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <path d="M30 40 L35 45 L50 30" stroke="#4da3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Top Right Piece -->
+  <g transform="translate(330, 150)">
+    <path d="M0 20 Q-10 20 -10 30 Q-10 40 0 40 L0 80 L80 80 L80 40 Q90 40 90 50 Q90 60 80 60 L80 0 L0 0 Z"
+          fill="url(#csGrad1)"
+          stroke="#007bff"
+          stroke-width="2"
+          opacity="0.8">
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0,0; 2,2; 0,0"
+        dur="2.2s"
+        repeatCount="indefinite"/>
+    </path>
+    <!-- Inner detail -->
+    <rect x="25" y="25" width="30" height="30" rx="5" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cx="40" cy="40" r="8" fill="#4da3ff" opacity="0.5"/>
+  </g>
+
+  <!-- Bottom Left Piece -->
+  <g transform="translate(250, 230)">
+    <path d="M0 0 L40 0 Q40 -10 50 -10 Q60 -10 60 0 L80 0 L80 80 L0 80 L0 40 Q-10 40 -10 30 Q-10 20 0 20 Z"
+          fill="url(#csGrad1)"
+          stroke="#007bff"
+          stroke-width="2"
+          opacity="0.8">
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0,0; -2,2; 0,0"
+        dur="2.4s"
+        repeatCount="indefinite"/>
+    </path>
+    <!-- Inner detail -->
+    <polygon points="40,30 50,40 40,50 30,40" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cx="40" cy="40" r="5" fill="#4da3ff"/>
+  </g>
+
+  <!-- Bottom Right Piece -->
+  <g transform="translate(330, 230)">
+    <path d="M0 0 L80 0 L80 80 L40 80 Q40 90 30 90 Q20 90 20 80 L0 80 L0 60 Q-10 60 -10 50 Q-10 40 0 40 Z"
+          fill="url(#csGrad2)"
+          stroke="#007bff"
+          stroke-width="2"
+          opacity="0.9">
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0,0; -2,-2; 0,0"
+        dur="2.6s"
+        repeatCount="indefinite"/>
+    </path>
+    <!-- Inner detail -->
+    <path d="M20 30 L40 40 L60 30 L60 50 L40 60 L20 50 Z" fill="none" stroke="#4da3ff" stroke-width="2"/>
+    <circle cx="40" cy="40" r="10" fill="none" stroke="#4da3ff" stroke-width="2"/>
+  </g>
+
+  <!-- Gear icon (customization symbol) -->
+  <g transform="translate(550, 225)">
+    <circle r="70" fill="url(#csGrad3)" opacity="0.3"/>
+
+    <!-- Gear teeth -->
+    <path d="M0 -50 L10 -60 L10 -50 L20 -50 L20 -40 L10 -40 L0 -50
+             M50 0 L60 -10 L50 -10 L50 -20 L40 -20 L40 -10 L50 0
+             M0 50 L-10 60 L-10 50 L-20 50 L-20 40 L-10 40 L0 50
+             M-50 0 L-60 10 L-50 10 L-50 20 L-40 20 L-40 10 L-50 0
+             M35 35 L45 45 L35 45 L35 55 L25 45 L35 35
+             M-35 35 L-45 45 L-45 35 L-55 35 L-45 25 L-35 35
+             M35 -35 L45 -45 L45 -35 L55 -35 L45 -25 L35 -35
+             M-35 -35 L-45 -45 L-35 -45 L-35 -55 L-25 -45 L-35 -35"
+          fill="#007bff"
+          stroke="#007bff"
+          stroke-width="1">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0"
+        to="360"
+        dur="20s"
+        repeatCount="indefinite"/>
+    </path>
+
+    <!-- Gear outer circle -->
+    <circle r="45" fill="none" stroke="#4da3ff" stroke-width="3">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0"
+        to="360"
+        dur="20s"
+        repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Gear inner circle -->
+    <circle r="20" fill="#0a0a0a" stroke="#4da3ff" stroke-width="2"/>
+    <circle r="10" fill="none" stroke="#007bff" stroke-width="2">
+      <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Code brackets (development symbol) -->
+  <g transform="translate(140, 225)">
+    <circle r="60" fill="url(#csGrad3)" opacity="0.3"/>
+
+    <path d="M-15 -25 L-30 0 L-15 25" stroke="#4da3ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="stroke-width" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M15 -25 L30 0 L15 25" stroke="#4da3ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="stroke-width" values="4;5;4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Slash in middle -->
+    <line x1="-5" y1="30" x2="5" y2="-30" stroke="#007bff" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Connection lines -->
+  <g stroke="#007bff" stroke-width="2" opacity="0.3" fill="none" stroke-dasharray="5,5">
+    <path d="M200 225 L240 185">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200 225 L240 265">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M420 185 L490 225">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M420 265 L490 225">
+      <animate attributeName="stroke-dashoffset" from="0" to="10" dur="1.6s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Floating elements -->
+  <g opacity="0.5">
+    <circle cx="450" cy="120" r="4" fill="#4da3ff">
+      <animate attributeName="cy" values="120;115;120" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="650" cy="350" r="4" fill="#007bff">
+      <animate attributeName="cy" values="350;345;350" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="350" r="4" fill="#4da3ff">
+      <animate attributeName="cy" values="350;345;350" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

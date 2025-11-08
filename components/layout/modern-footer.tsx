@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Mail, Linkedin, Twitter, Github } from "lucide-react"
 
 const footerLinks = {
@@ -41,11 +42,14 @@ export function ModernFooter() {
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary-500/30 rounded-lg blur group-hover:blur-md transition-all" />
-                <div className="relative bg-gradient-to-br from-primary-500 to-primary-600 text-white font-bold text-xl px-3 py-1.5 rounded-lg shadow-lg shadow-primary-500/30">
-                  A
-                </div>
+              <div className="relative w-10 h-10">
+                <Image
+                  src="/logo.svg"
+                  alt="Automexus Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                />
               </div>
               <span className="font-bold text-xl text-white">
                 Automexus

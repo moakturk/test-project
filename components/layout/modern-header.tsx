@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -38,11 +39,15 @@ export function ModernHeader() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary-500/30 rounded-lg blur group-hover:blur-md transition-all" />
-              <div className="relative bg-gradient-to-br from-primary-500 to-primary-600 text-white font-bold text-xl md:text-2xl px-3 py-1.5 rounded-lg shadow-lg shadow-primary-500/50">
-                A
-              </div>
+            <div className="relative w-10 h-10 md:w-12 md:h-12">
+              <Image
+                src="/logo.svg"
+                alt="Automexus Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain transition-transform group-hover:scale-110"
+                priority
+              />
             </div>
             <span className="font-bold text-xl md:text-2xl text-white">
               Automexus

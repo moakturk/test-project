@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import Image from "next/image"
 
 export function EpicIntro({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
@@ -22,8 +23,15 @@ export function EpicIntro({ onComplete }: { onComplete: () => void }) {
           <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600 rounded-full blur-3xl opacity-50" />
 
           {/* Logo */}
-          <div className="relative bg-gradient-to-br from-primary-500 to-primary-600 text-white font-bold text-6xl md:text-8xl px-12 py-8 rounded-2xl shadow-2xl shadow-primary-500/50">
-            A
+          <div className="relative w-32 h-32 md:w-40 md:h-40">
+            <Image
+              src="/logo.svg"
+              alt="Automexus"
+              width={160}
+              height={160}
+              className="w-full h-full object-contain"
+              priority
+            />
           </div>
         </div>
 

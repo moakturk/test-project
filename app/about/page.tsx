@@ -99,15 +99,15 @@ function OurStory() {
               effectively.
             </p>
             <p>
-              Our team of AI experts, software engineers, and business strategists came together
-              to build solutions that not only automate workflows but also continuously learn and
-              improve. We've worked with hundreds of companies across various industries, helping
-              them save time, reduce costs, and focus on what truly matters - growing their business.
+              To solve this, Automexus is built on solutions that not only automate workflows but
+              also continuously learn and improve. We are now working with forward-thinking companies
+              across various industries, helping them save time, reduce costs, and focus on what truly
+              matters - growing their business.
             </p>
             <p>
-              Today, Automexus serves clients globally, from startups to Fortune 500 companies,
-              delivering tailored automation solutions that drive measurable results. Our commitment
-              to innovation, excellence, and customer success remains at the core of everything we do.
+              Today, Automexus serves clients globally, delivering tailored automation solutions that
+              drive measurable results. Our commitment to innovation, excellence, and customer success
+              remains at the core of everything we do.
             </p>
           </div>
         </div>

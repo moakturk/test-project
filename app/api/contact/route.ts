@@ -3,6 +3,7 @@ import { Resend } from 'resend'
 import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { rateLimit, getClientIp } from '@/lib/rate-limit'
+import { verifyCsrfToken, CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '@/lib/csrf'
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -38,6 +39,30 @@ export async function POST(request: NextRequest) {
             'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
           },
         }
+      )
+    }
+
+    // CSRF Protection: Verify token
+    const csrfToken = request.headers.get(CSRF_HEADER_NAME)
+    const csrfCookie = request.cookies.get(CSRF_COOKIE_NAME)?.value
+
+    if (!csrfToken || !csrfCookie) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'CSRF token missing. Please refresh the page and try again.',
+        },
+        { status: 403 }
+      )
+    }
+
+    if (!verifyCsrfToken(csrfToken, csrfCookie)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Invalid CSRF token. Please refresh the page and try again.',
+        },
+        { status: 403 }
       )
     }
 

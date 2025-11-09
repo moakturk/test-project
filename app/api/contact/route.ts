@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     const { data: contact, error: dbError } = await supabaseAdmin
       .from('contacts')
-      .insert(contactData)
+      .insert(contactData as any)
       .select()
       .single()
 

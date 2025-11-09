@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
 const footerLinks = {
@@ -37,16 +38,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-1 group shrink-0" style={{ display: 'flex', flexWrap: 'nowrap' }}>
-              <div className="relative shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity" />
-                <div className="relative bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-bold text-base md:text-xl px-2 md:px-3 py-1 md:py-1.5 rounded-lg">
-                  A
-                </div>
-              </div>
-              <span className="font-bold text-base md:text-xl text-white" style={{ whiteSpace: 'nowrap' }}>
-                Automexus
-              </span>
+            <Link href="/" className="relative inline-block shrink-0">
+              <Image
+                src="/logo.svg"
+                alt="Automexus"
+                width={140}
+                height={32}
+                className="h-8 md:h-10 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Transforming businesses with intelligent AI automation solutions.

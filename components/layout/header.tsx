@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -37,16 +38,15 @@ export function Header() {
       <nav className="container mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-2 h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1 group shrink-0" style={{ display: 'flex', flexWrap: 'nowrap' }}>
-            <div className="relative shrink-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-bold text-sm md:text-2xl px-1.5 md:px-3 py-1 md:py-1.5 rounded-lg">
-                A
-              </div>
-            </div>
-            <span className="font-bold text-sm md:text-2xl text-primary-600" style={{ whiteSpace: 'nowrap' }}>
-              Automexus
-            </span>
+          <Link href="/" className="relative shrink-0">
+            <Image
+              src="/logo.svg"
+              alt="Automexus"
+              width={140}
+              height={32}
+              className="h-8 md:h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabase/server'
-import type { Database } from '@/lib/supabase/types'
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -96,8 +95,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          message: error.errors[0]?.message || 'Validation error',
-          errors: error.errors.map((e) => ({
+          message: error.issues[0]?.message || 'Validation error',
+          errors: error.issues.map((e) => ({
             field: e.path.join('.'),
             message: e.message,
           })),

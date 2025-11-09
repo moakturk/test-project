@@ -17,21 +17,13 @@ export default function Home() {
     const hasVisitedEver = localStorage.getItem('automexus-visited')
     const hasVisitedThisSession = sessionStorage.getItem('automexus-session-visited')
 
-    console.log('🔍 Intro check:', {
-      hasVisitedEver,
-      hasVisitedThisSession,
-      willShowIntro: !hasVisitedEver && !hasVisitedThisSession
-    })
-
     // Only show intro if NEVER visited before
     if (!hasVisitedEver && !hasVisitedThisSession) {
-      console.log('✨ Showing intro animation - first visit!')
       // Mark as visited in BOTH storages
       localStorage.setItem('automexus-visited', 'true')
       sessionStorage.setItem('automexus-session-visited', 'true')
       setShowIntro(true)
     } else {
-      console.log('⏭️ Skipping intro - user has visited before')
       // Make sure session is also marked (in case localStorage was set but session wasn't)
       sessionStorage.setItem('automexus-session-visited', 'true')
     }

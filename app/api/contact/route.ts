@@ -44,12 +44,7 @@ export async function POST(request: NextRequest) {
 
     // 2. Send email notification via Resend
     try {
-      console.log('Attempting to send email...')
-      console.log('EMAIL_FROM:', process.env.EMAIL_FROM)
-      console.log('EMAIL_TO:', process.env.EMAIL_TO)
-      console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY)
-
-      const emailResult = await resend.emails.send({
+      await resend.emails.send({
         from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
         to: process.env.EMAIL_TO || 'info@automexus.com',
         subject: `New Contact Form Submission from ${validatedData.name}`,
@@ -78,8 +73,6 @@ export async function POST(request: NextRequest) {
           </div>
         `,
       })
-
-      console.log('Email sent successfully! Result:', emailResult)
     } catch (emailError) {
       console.error('Email error:', emailError)
       // Don't fail the request if email fails - data is already saved in DB

@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabase/server'
 import { rateLimit, getClientIp } from '@/lib/rate-limit'
 import { verifyCsrfToken, CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '@/lib/csrf'
+import { validateEmail } from '@/lib/email-validation'
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -69,7 +70,35 @@ export async function POST(request: NextRequest) {
     // Parse request body
     const body = await request.json()
 
-    // Validate input
+    // Honeypot check: If website field is filled, it's a bot
+    if (body.website && body.website.trim() !== '') {
+      console.warn('Honeypot triggered - potential bot submission:', {
+        ip: clientIp,
+        website: body.website,
+      })
+      // Return success to avoid tipping off the bot
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'Thank you for contacting us!',
+        },
+        { status: 200 }
+      )
+    }
+
+    // Validate email (disposable email detection)
+    const emailValidation = validateEmail(body.email)
+    if (!emailValidation.valid) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: emailValidation.reason || 'Invalid email address',
+        },
+        { status: 400 }
+      )
+    }
+
+    // Validate input with Zod
     const validatedData = contactSchema.parse(body)
 
     // 1. Save to Supabase

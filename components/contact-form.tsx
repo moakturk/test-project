@@ -15,6 +15,7 @@ export function ContactForm() {
     company: "",
     phone: "",
     message: "",
+    website: "", // Honeypot field - should remain empty
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -79,6 +80,7 @@ export function ContactForm() {
             company: "",
             phone: "",
             message: "",
+            website: "",
           })
         }, 5000)
       } else {
@@ -184,6 +186,21 @@ export function ContactForm() {
             required
             placeholder="Tell us about your automation needs..."
             className="min-h-[150px] bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-primary-500"
+          />
+        </div>
+
+        {/* Honeypot field - hidden from users, visible to bots */}
+        <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
+          <Label htmlFor="website">Website (leave blank)</Label>
+          <Input
+            id="website"
+            name="website"
+            type="text"
+            value={formData.website}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+            placeholder="https://example.com"
           />
         </div>
 

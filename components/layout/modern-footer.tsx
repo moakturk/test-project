@@ -46,7 +46,7 @@ export function ModernFooter() {
             <Link href="/" className="flex items-center group">
               <div className="relative w-16 h-16 md:w-20 md:h-20">
                 <Image
-                  src="/logo.svg"
+                  src="/yeni_logo.svg"
                   alt="Automexus"
                   width={80}
                   height={80}

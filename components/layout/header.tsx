@@ -37,14 +37,14 @@ export function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1.5 group shrink-0 min-w-[140px] md:min-w-[180px]">
+          <Link href="/" className="flex items-center gap-1.5 group flex-nowrap shrink-0">
             <div className="relative shrink-0">
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity" />
               <div className="relative bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-bold text-base md:text-2xl px-2 md:px-3 py-1.5 rounded-lg">
                 A
               </div>
             </div>
-            <span className="font-bold text-base md:text-2xl bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent whitespace-nowrap shrink-0">
+            <span className="font-bold text-base md:text-2xl text-primary-600 inline-block">
               Automexus
             </span>
           </Link>

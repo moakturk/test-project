@@ -25,20 +25,19 @@ export async function POST(request: NextRequest) {
     const validatedData = contactSchema.parse(body)
 
     // 1. Save to Supabase
-    type ContactInsert = Database['public']['Tables']['contacts']['Insert']
-
-    const contactData: ContactInsert = {
-      name: validatedData.name,
-      email: validatedData.email,
-      phone: validatedData.phone || null,
-      company: validatedData.company || null,
-      message: validatedData.message,
-      status: 'new',
-    }
-
+    // 1. Save to Supabase
     const { data: contact, error: dbError } = await supabaseAdmin
       .from('contacts')
-      .insert(contactData as any)
+      .insert([
+        {
+          name: validatedData.name,
+          email: validatedData.email,
+          phone: validatedData.phone || null,
+          company: validatedData.company || null,
+          message: validatedData.message,
+          status: 'new' as const,
+        },
+      ])
       .select()
       .single()
 

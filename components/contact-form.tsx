@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -18,6 +18,23 @@ export function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [csrfToken, setCsrfToken] = useState<string>('')
+
+  // Fetch CSRF token on component mount
+  useEffect(() => {
+    async function fetchCsrfToken() {
+      try {
+        const response = await fetch('/api/csrf-token')
+        const data = await response.json()
+        if (data.success && data.token) {
+          setCsrfToken(data.token)
+        }
+      } catch (error) {
+        console.error('Failed to fetch CSRF token:', error)
+      }
+    }
+    fetchCsrfToken()
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -31,11 +48,12 @@ export function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      // Call API endpoint
+      // Call API endpoint with CSRF token
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-csrf-token': csrfToken,
         },
         body: JSON.stringify(formData),
       })

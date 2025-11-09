@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     // 1. Save to Supabase
     const { data: contact, error: dbError } = await supabaseAdmin
       .from('contacts')
-      .insert([
+      .insert({
         {
           name: validatedData.name,
           email: validatedData.email,
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
           message: validatedData.message,
           status: 'new',
         },
-      ])
+      })
       .select()
       .single()
 

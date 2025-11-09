@@ -44,12 +44,14 @@ See [QUICK_RECOVERY.md](./QUICK_RECOVERY.md) for immediate action items.
 - **Analytics:** Google Analytics 4, Vercel Analytics, Speed Insights
 
 ### Key Features
-1. **Contact Form** with Supabase backend and RLS security
-2. **Rate Limiting** (3 requests/min per IP)
-3. **SEO Optimization** (sitemap, robots.txt, meta tags)
-4. **Performance Optimization** (image optimization, caching, compression)
-5. **Security** (CSP, security headers, HTTPS enforcement)
-6. **Monitoring** (GA4, Vercel Analytics, Speed Insights)
+1. **Admin Panel** with NextAuth.js authentication and contact management
+2. **Contact Form** with Supabase backend and RLS security
+3. **CSRF Protection** (double submit cookie pattern)
+4. **Rate Limiting** (3 requests/min per IP)
+5. **SEO Optimization** (sitemap, robots.txt, structured data)
+6. **Performance Optimization** (image optimization, caching, compression)
+7. **Security** (CSP, security headers, HTTPS enforcement)
+8. **Monitoring** (GA4, Vercel Analytics, Speed Insights)
 
 ## 📁 Project Structure
 
@@ -192,6 +194,26 @@ Every pull request gets a unique preview URL for testing.
 - **Vercel Support:** https://vercel.com/support
 - **Supabase Support:** https://supabase.com/support
 - **GitHub Issues:** https://github.com/moakturk/test-project/issues
+
+## 🔐 Admin Panel Access
+
+### Admin Login
+- **URL:** https://automexus.com/admin/login
+- **Email:** admin@automexus.com
+- **Password:** See secure credentials storage
+
+### Admin Features
+- **Dashboard:** View contact statistics and recent submissions
+- **Contact Management:** Filter, update status, and manage all contact form submissions
+- **Status Management:** Track contacts as New, Read, Replied, or Archived
+- **CRUD Operations:** View, update status, and delete contacts
+
+### Admin Routes
+- `/admin/login` - Admin authentication
+- `/admin/dashboard` - Overview and statistics
+- `/admin/contacts` - Full contact management interface
+
+All admin routes are protected by NextAuth.js middleware and require authentication.
 
 ## 📜 License
 

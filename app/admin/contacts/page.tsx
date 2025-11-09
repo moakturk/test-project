@@ -20,7 +20,7 @@ interface Contact {
 export default async function ContactsPage({
   searchParams,
 }: {
-  searchParams: { status?: ContactStatus }
+  searchParams: Promise<{ status?: ContactStatus }>
 }) {
   const session = await auth()
 
@@ -29,7 +29,8 @@ export default async function ContactsPage({
   }
 
   // Get filter status
-  const filterStatus = searchParams.status
+  const params = await searchParams
+  const filterStatus = params.status
 
   // Build query
   let query = supabaseAdmin

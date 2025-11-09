@@ -29,24 +29,42 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission (replace with actual API call)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    console.log("Form submitted:", formData)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        message: "",
+    try {
+      // Call API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setIsSubmitted(true)
+
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setFormData({
+            name: "",
+            email: "",
+            company: "",
+            phone: "",
+            message: "",
+          })
+        }, 5000)
+      } else {
+        // Handle error
+        alert(data.message || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('Failed to send message. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {

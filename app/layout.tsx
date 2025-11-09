@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://automexus.com'),
@@ -73,7 +76,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased">
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

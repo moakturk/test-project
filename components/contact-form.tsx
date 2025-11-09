@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Send, CheckCircle } from "lucide-react"
+import { trackEvent } from "@/components/GoogleAnalytics"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -43,6 +44,13 @@ export function ContactForm() {
 
       if (response.ok && data.success) {
         setIsSubmitted(true)
+
+        // Track successful form submission
+        trackEvent('contact_form_submit', {
+          form_name: 'contact',
+          has_company: !!formData.company,
+          has_phone: !!formData.phone,
+        })
 
         // Reset form after 5 seconds
         setTimeout(() => {

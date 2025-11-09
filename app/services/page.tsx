@@ -3,6 +3,7 @@
 import { ModernHeader } from "@/components/layout/modern-header"
 import { ModernFooter } from "@/components/layout/modern-footer"
 import { AnimatedBackground } from "@/components/animated-background"
+import StructuredData from "@/components/StructuredData"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Bot, TrendingUp, Users, Database, Workflow, Code, CheckCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
@@ -175,6 +176,7 @@ function ServiceItem({ service, index }: { service: typeof services[0], index: n
 export default function ModernServicesPage() {
   return (
     <main className="min-h-screen bg-black relative">
+      <StructuredData type="service" />
       <AnimatedBackground />
       <div className="relative z-10">
         <ModernHeader />

@@ -13,13 +13,27 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(false)
 
   useEffect(() => {
-    // Check if user has visited before
-    const hasVisited = localStorage.getItem('automexus-visited')
+    // Check BOTH localStorage and sessionStorage
+    const hasVisitedEver = localStorage.getItem('automexus-visited')
+    const hasVisitedThisSession = sessionStorage.getItem('automexus-session-visited')
 
-    if (!hasVisited) {
-      // First time visitor - show intro and immediately mark as visited
+    console.log('🔍 Intro check:', {
+      hasVisitedEver,
+      hasVisitedThisSession,
+      willShowIntro: !hasVisitedEver && !hasVisitedThisSession
+    })
+
+    // Only show intro if NEVER visited before
+    if (!hasVisitedEver && !hasVisitedThisSession) {
+      console.log('✨ Showing intro animation - first visit!')
+      // Mark as visited in BOTH storages
       localStorage.setItem('automexus-visited', 'true')
+      sessionStorage.setItem('automexus-session-visited', 'true')
       setShowIntro(true)
+    } else {
+      console.log('⏭️ Skipping intro - user has visited before')
+      // Make sure session is also marked (in case localStorage was set but session wasn't)
+      sessionStorage.setItem('automexus-session-visited', 'true')
     }
   }, [])
 

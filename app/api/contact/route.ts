@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabase/server'
+import { rateLimit, getClientIp } from '@/lib/rate-limit'
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -17,6 +18,29 @@ const contactSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting: Max 3 requests per minute per IP
+    const clientIp = getClientIp(request)
+    const rateLimitResult = rateLimit(clientIp, 3, 60000)
+
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Too many requests. Please try again later.',
+          retryAfter: Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+            'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      )
+    }
+
     // Parse request body
     const body = await request.json()
 

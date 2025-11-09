@@ -27,14 +27,12 @@ export async function POST(request: NextRequest) {
     const { data: contact, error: dbError } = await supabaseAdmin
       .from('contacts')
       .insert({
-        {
           name: validatedData.name,
           email: validatedData.email,
           phone: validatedData.phone || null,
           company: validatedData.company || null,
           message: validatedData.message,
           status: 'new',
-        },
       })
       .select()
       .single()

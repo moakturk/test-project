@@ -8,10 +8,23 @@ export const metadata: Metadata = {
     template: "%s | Automexus"
   },
   description: "Transform your business with intelligent automation. Automexus delivers cutting-edge AI solutions for marketing, operations, and workflow automation to help businesses scale efficiently.",
-  keywords: ["AI automation", "business automation", "marketing automation", "workflow automation", "process automation", "AI solutions"],
+  keywords: [
+    "AI automation",
+    "business automation",
+    "marketing automation",
+    "workflow automation",
+    "process automation",
+    "AI solutions",
+    "yapay zeka otomasyon",
+    "iş otomasyonu",
+    "dijital dönüşüm"
+  ],
   authors: [{ name: "Automexus" }],
   creator: "Automexus",
   publisher: "Automexus",
+  alternates: {
+    canonical: 'https://automexus.com',
+  },
   robots: {
     index: true,
     follow: true,
@@ -26,6 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    alternateLocale: ['tr_TR'],
     url: 'https://automexus.com',
     siteName: 'Automexus',
     title: 'Automexus - AI-Powered Business Automation Solutions',
@@ -44,6 +58,7 @@ export const metadata: Metadata = {
     title: 'Automexus - AI-Powered Business Automation',
     description: 'Transform your business with intelligent automation solutions.',
     images: ['/og-image.jpg'],
+    creator: '@automexus',
   },
   verification: {
     google: 'your-google-verification-code',

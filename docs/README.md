@@ -7,6 +7,7 @@ Comprehensive documentation for the Automexus website infrastructure, deployment
 ### Operations & Maintenance
 - **[BACKUP_RECOVERY.md](./BACKUP_RECOVERY.md)** - Complete backup and disaster recovery procedures
 - **[QUICK_RECOVERY.md](./QUICK_RECOVERY.md)** - Quick reference for emergency scenarios
+- **[MONITORING.md](./MONITORING.md)** - Uptime monitoring and alerting configuration
 
 ## 🚀 Quick Start
 

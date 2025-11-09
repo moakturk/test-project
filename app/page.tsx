@@ -11,15 +11,14 @@ import { useState, useEffect } from "react"
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(false)
-  const [isFirstVisit, setIsFirstVisit] = useState(false)
 
   useEffect(() => {
     // Check if user has visited before
     const hasVisited = localStorage.getItem('automexus-visited')
 
     if (!hasVisited) {
-      // First time visitor - show intro
-      setIsFirstVisit(true)
+      // First time visitor - show intro and immediately mark as visited
+      localStorage.setItem('automexus-visited', 'true')
       setShowIntro(true)
     }
   }, [])
@@ -35,16 +34,8 @@ export default function Home() {
         <ModernFooter />
       </div>
 
-      {/* Intro overlay - web sitesi arkada zaten var */}
-      {showIntro && (
-        <EpicIntro
-          onComplete={() => {
-            setShowIntro(false)
-            // Mark as visited so intro won't show again
-            localStorage.setItem('automexus-visited', 'true')
-          }}
-        />
-      )}
+      {/* Intro overlay - sadece ilk ziyarette gösterilir */}
+      {showIntro && <EpicIntro onComplete={() => setShowIntro(false)} />}
     </main>
   )
 }

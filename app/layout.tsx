@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import StructuredData from "@/components/StructuredData";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -77,6 +78,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="antialiased font-sans">
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+        <StructuredData type="organization" />
+        <StructuredData type="website" />
         {children}
         <Analytics />
         <SpeedInsights />

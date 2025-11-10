@@ -4,6 +4,8 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import StructuredData from "@/components/StructuredData";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ErrorBoundary } from "@/components/error-boundary";
+import { SkipToContent } from "@/components/skip-to-content";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://automexus.com'),
@@ -77,10 +79,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased font-sans">
+        <SkipToContent />
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
         <StructuredData type="organization" />
         <StructuredData type="website" />
-        {children}
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
         <Analytics />
         <SpeedInsights />
       </body>

@@ -69,10 +69,30 @@ const nextConfig: NextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains',
           },
-          // Content Security Policy
+          // Content Security Policy (hardened)
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://aipmvjykvdyvxrsvhsxs.supabase.co https://vercel.live wss://ws-us3.pusher.com https://www.google-analytics.com https://analytics.google.com https://*.ingest.sentry.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+            value: [
+              "default-src 'self'",
+              // Scripts: Allow self, Vercel, GA4, Sentry - removed unsafe-eval for better security
+              "script-src 'self' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com https://www.googletagmanager.com https://www.google-analytics.com",
+              // Styles: Allow inline for Tailwind and component styles
+              "style-src 'self' 'unsafe-inline'",
+              // Images: Allow all HTTPS for flexibility with external images
+              "img-src 'self' data: https:",
+              // Fonts: Allow self and data URLs
+              "font-src 'self' data:",
+              // Connections: Supabase, Vercel, GA4, Sentry
+              "connect-src 'self' https://aipmvjykvdyvxrsvhsxs.supabase.co https://vercel.live wss://ws-us3.pusher.com https://www.google-analytics.com https://analytics.google.com https://*.ingest.sentry.io https://region1.google-analytics.com",
+              // Prevent framing
+              "frame-ancestors 'none'",
+              // Restrict base and form actions
+              "base-uri 'self'",
+              "form-action 'self'",
+              // Object and media restrictions
+              "object-src 'none'",
+              "media-src 'self'",
+            ].join('; '),
           },
         ],
       },

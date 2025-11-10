@@ -1,7 +1,7 @@
 import Script from 'next/script'
 
 interface StructuredDataProps {
-  type: 'organization' | 'website' | 'service'
+  type: 'organization' | 'website' | 'service' | 'faq' | 'breadcrumb' | 'localbusiness'
   data?: Record<string, unknown>
 }
 
@@ -112,6 +112,50 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
             ],
           },
           ...data,
+        }
+
+      case 'faq':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: data?.questions || [],
+        }
+
+      case 'breadcrumb':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: data?.items || [],
+        }
+
+      case 'localbusiness':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          '@id': 'https://automexus.com',
+          name: 'Automexus',
+          image: 'https://automexus.com/og-image.jpg',
+          url: 'https://automexus.com',
+          telephone: '+1-555-000-0000',
+          email: 'info@automexus.com',
+          description: 'AI-Powered Business Automation Solutions - Transform your business with intelligent automation.',
+          address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'US',
+          },
+          geo: data?.geo || undefined,
+          openingHoursSpecification: data?.openingHours || [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+              opens: '09:00',
+              closes: '17:00',
+            },
+          ],
+          sameAs: [
+            'https://linkedin.com/company/automexus',
+            'https://twitter.com/automexus',
+          ],
         }
 
       default:

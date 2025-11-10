@@ -119,7 +119,7 @@ export function ContactForm() {
           Fill out the form below and we'll get back to you as soon as possible
         </p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" aria-busy={isSubmitting}>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-gray-300">Full Name *</Label>
@@ -207,17 +207,18 @@ export function ContactForm() {
         <Button
           type="submit"
           size="lg"
-          className="w-full bg-primary-500 hover:bg-primary-600 shadow-lg shadow-primary-500/30"
+          className="w-full bg-primary-500 hover:bg-primary-600 shadow-lg shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-gray-900"
           disabled={isSubmitting}
+          aria-label={isSubmitting ? "Sending message..." : "Send message"}
         >
           {isSubmitting ? (
             <>
-              <span className="animate-spin mr-2">⏳</span>
+              <span className="animate-spin mr-2" aria-hidden="true">⏳</span>
               Sending...
             </>
           ) : (
             <>
-              <Send className="mr-2 h-5 w-5" />
+              <Send className="mr-2 h-5 w-5" aria-hidden="true" />
               Send Message
             </>
           )}

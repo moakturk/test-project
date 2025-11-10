@@ -52,18 +52,18 @@ export function ModernHeader() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative px-4 py-2 text-gray-300 hover:text-white font-medium transition-colors group"
+                className="relative px-4 py-2 text-gray-300 hover:text-white font-medium transition-colors group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-black rounded"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all group-hover:w-full" aria-hidden="true" />
               </Link>
             ))}
-          </div>
+          </nav>
 
           {/* CTA Button (Desktop) */}
           <div className="hidden md:flex items-center space-x-4">
@@ -81,26 +81,33 @@ export function ModernHeader() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-800/50 transition-colors text-gray-300"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-800/50 transition-colors text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-black"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6" aria-hidden="true" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6" aria-hidden="true" />
             )}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-2 border-t border-gray-800 backdrop-blur-xl bg-black/90">
+          <div
+            id="mobile-menu"
+            className="md:hidden py-4 space-y-2 border-t border-gray-800 backdrop-blur-xl bg-black/90"
+            role="navigation"
+            aria-label="Mobile navigation"
+          >
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg font-medium transition-all"
+                className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-black"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -109,7 +116,7 @@ export function ModernHeader() {
             <div className="px-4 pt-2">
               <Button
                 variant="default"
-                className="w-full bg-primary-500 hover:bg-primary-600 shadow-lg shadow-primary-500/30"
+                className="w-full bg-primary-500 hover:bg-primary-600 shadow-lg shadow-primary-500/30 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-black"
                 asChild
               >
                 <Link href="/contact">

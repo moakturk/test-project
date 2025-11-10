@@ -5,30 +5,46 @@ import { supabaseAdmin } from '@/lib/supabase/server'
 import { rateLimit, getClientIp } from '@/lib/rate-limit'
 import { verifyCsrfToken, CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '@/lib/csrf'
 import { validateEmail } from '@/lib/email-validation'
+import { sanitizeFormInput, sanitizeEmail, sanitizePhone } from '@/lib/sanitize'
+import { CONTACT, MESSAGES, RATE_LIMIT as RATE_LIMITS, STATUS, VALIDATION } from '@/lib/constants'
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Validation schema
+// Validation schema using constants
 const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  name: z.string()
+    .min(VALIDATION.NAME_MIN_LENGTH, `Name must be at least ${VALIDATION.NAME_MIN_LENGTH} characters`)
+    .max(VALIDATION.NAME_MAX_LENGTH, `Name must be less than ${VALIDATION.NAME_MAX_LENGTH} characters`),
+  email: z.string()
+    .email('Invalid email address')
+    .max(VALIDATION.EMAIL_MAX_LENGTH, 'Email is too long'),
+  phone: z.string()
+    .max(VALIDATION.PHONE_MAX_LENGTH, 'Phone number is too long')
+    .optional(),
+  company: z.string()
+    .max(VALIDATION.COMPANY_MAX_LENGTH, 'Company name is too long')
+    .optional(),
+  message: z.string()
+    .min(VALIDATION.MESSAGE_MIN_LENGTH, `Message must be at least ${VALIDATION.MESSAGE_MIN_LENGTH} characters`)
+    .max(VALIDATION.MESSAGE_MAX_LENGTH, `Message must be less than ${VALIDATION.MESSAGE_MAX_LENGTH} characters`),
 })
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting: Max 3 requests per minute per IP
+    // Rate limiting using constants
     const clientIp = getClientIp(request)
-    const rateLimitResult = rateLimit(clientIp, 3, 60000)
+    const rateLimitResult = rateLimit(
+      clientIp,
+      RATE_LIMITS.CONTACT_FORM.MAX_REQUESTS,
+      RATE_LIMITS.CONTACT_FORM.WINDOW_MS
+    )
 
     if (!rateLimitResult.success) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Too many requests. Please try again later.',
+          message: MESSAGES.ERROR.RATE_LIMIT,
           retryAfter: Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
         },
         {
@@ -51,7 +67,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          message: 'CSRF token missing. Please refresh the page and try again.',
+          message: MESSAGES.ERROR.CSRF_MISSING,
         },
         { status: 403 }
       )
@@ -61,7 +77,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Invalid CSRF token. Please refresh the page and try again.',
+          message: MESSAGES.ERROR.CSRF_INVALID,
         },
         { status: 403 }
       )
@@ -80,7 +96,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: true,
-          message: 'Thank you for contacting us!',
+          message: MESSAGES.SUCCESS.CONTACT_FORM,
         },
         { status: 200 }
       )
@@ -101,16 +117,25 @@ export async function POST(request: NextRequest) {
     // Validate input with Zod
     const validatedData = contactSchema.parse(body)
 
-    // 1. Save to Supabase
+    // Sanitize all inputs to prevent XSS attacks
+    const sanitizedData = {
+      name: sanitizeFormInput(validatedData.name),
+      email: sanitizeEmail(validatedData.email),
+      phone: validatedData.phone ? sanitizePhone(validatedData.phone) : undefined,
+      company: validatedData.company ? sanitizeFormInput(validatedData.company) : undefined,
+      message: sanitizeFormInput(validatedData.message),
+    }
+
+    // 1. Save to Supabase (using sanitized data)
     const { data: contact, error: dbError } = await supabaseAdmin
       .from('contacts')
       .insert({
-        name: validatedData.name,
-        email: validatedData.email,
-        phone: validatedData.phone || null,
-        company: validatedData.company || null,
-        message: validatedData.message,
-        status: 'new',
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        phone: sanitizedData.phone || null,
+        company: sanitizedData.company || null,
+        message: sanitizedData.message,
+        status: STATUS.CONTACT.NEW,
       })
       .select()
       .single()
@@ -124,22 +149,22 @@ export async function POST(request: NextRequest) {
     try {
       await resend.emails.send({
         from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
-        to: process.env.EMAIL_TO || 'info@automexus.com',
-        subject: `New Contact Form Submission from ${validatedData.name}`,
+        to: process.env.EMAIL_TO || CONTACT.EMAIL,
+        subject: `New Contact Form Submission from ${sanitizedData.name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #007bff;">New Contact Form Submission</h2>
 
             <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p><strong>Name:</strong> ${validatedData.name}</p>
-              <p><strong>Email:</strong> ${validatedData.email}</p>
-              ${validatedData.phone ? `<p><strong>Phone:</strong> ${validatedData.phone}</p>` : ''}
-              ${validatedData.company ? `<p><strong>Company:</strong> ${validatedData.company}</p>` : ''}
+              <p><strong>Name:</strong> ${sanitizedData.name}</p>
+              <p><strong>Email:</strong> ${sanitizedData.email}</p>
+              ${sanitizedData.phone ? `<p><strong>Phone:</strong> ${sanitizedData.phone}</p>` : ''}
+              ${sanitizedData.company ? `<p><strong>Company:</strong> ${sanitizedData.company}</p>` : ''}
             </div>
 
             <div style="margin: 20px 0;">
               <h3 style="color: #333;">Message:</h3>
-              <p style="line-height: 1.6; color: #666;">${validatedData.message}</p>
+              <p style="line-height: 1.6; color: #666; white-space: pre-wrap;">${sanitizedData.message}</p>
             </div>
 
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
@@ -160,7 +185,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
-        message: 'Thank you for contacting us! We will get back to you soon.',
+        message: MESSAGES.SUCCESS.CONTACT_FORM,
         contactId: contact.id,
       },
       { status: 200 }
@@ -187,7 +212,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message: 'Something went wrong. Please try again later.',
+        message: MESSAGES.ERROR.GENERIC,
       },
       { status: 500 }
     )

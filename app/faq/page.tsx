@@ -6,6 +6,7 @@ import { AnimatedBackground } from "@/components/animated-background"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { ChevronDown } from "lucide-react"
 import { useState } from "react"
+import StructuredData from "@/components/StructuredData"
 
 const faqs = [
   {
@@ -93,8 +94,21 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
 }
 
 export default function FAQPage() {
+  // Prepare FAQ schema data
+  const faqSchemaData = {
+    questions: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+
   return (
     <main className="min-h-screen bg-black relative">
+      <StructuredData type="faq" data={faqSchemaData} />
       <AnimatedBackground />
       <div className="relative z-10">
         <ModernHeader />

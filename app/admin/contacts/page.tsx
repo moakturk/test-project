@@ -4,6 +4,7 @@ import { supabaseAdmin } from "@/lib/supabase/server"
 import { LogOut, Mail, Building, MessageSquare, Calendar, Filter } from "lucide-react"
 import Link from "next/link"
 import ContactActions from "./contact-actions"
+import ExportButton from "./export-button"
 
 type ContactStatus = "new" | "read" | "replied" | "archived"
 
@@ -12,6 +13,7 @@ interface Contact {
   name: string
   email: string
   company: string | null
+  phone: string | null
   message: string
   status: ContactStatus
   created_at: string
@@ -92,6 +94,12 @@ export default async function ContactsPage({
               </div>
             </div>
             <div className="flex items-center gap-4">
+              {contacts && contacts.length > 0 && (
+                <ExportButton
+                  contacts={contacts as Contact[]}
+                  filename={filterStatus ? `contacts_${filterStatus}` : "contacts"}
+                />
+              )}
               <Link
                 href="/admin/dashboard"
                 className="px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors"

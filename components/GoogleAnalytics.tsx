@@ -1,9 +1,37 @@
 'use client'
 
 import Script from 'next/script'
+import { useState, useEffect } from 'react'
 
 export default function GoogleAnalytics({ measurementId }: { measurementId: string }) {
-  if (!measurementId) {
+  const [loadAnalytics, setLoadAnalytics] = useState(false)
+
+  useEffect(() => {
+    // Check if user has given consent
+    const checkConsent = () => {
+      const consent = localStorage.getItem('automexus-cookie-consent')
+      if (consent === 'accepted') {
+        setLoadAnalytics(true)
+      }
+    }
+
+    // Check initial consent
+    checkConsent()
+
+    // Listen for consent changes
+    const handleConsentAccepted = () => setLoadAnalytics(true)
+    const handleConsentRejected = () => setLoadAnalytics(false)
+
+    window.addEventListener('cookieConsentAccepted', handleConsentAccepted)
+    window.addEventListener('cookieConsentRejected', handleConsentRejected)
+
+    return () => {
+      window.removeEventListener('cookieConsentAccepted', handleConsentAccepted)
+      window.removeEventListener('cookieConsentRejected', handleConsentRejected)
+    }
+  }, [])
+
+  if (!measurementId || !loadAnalytics) {
     return null
   }
 

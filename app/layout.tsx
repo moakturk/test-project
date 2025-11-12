@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import StructuredData from "@/components/StructuredData";
+import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -81,6 +82,7 @@ export default function RootLayout({
         <StructuredData type="organization" />
         <StructuredData type="website" />
         {children}
+        <CookieConsent />
         <Analytics />
         <SpeedInsights />
       </body>

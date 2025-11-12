@@ -23,10 +23,10 @@ export default async function Image() {
           backgroundColor: '#000',
         }}
       >
-        {/* Logo - büyük ve merkezi */}
+        {/* Sadece logo - merkezi */}
         <svg
-          width="400"
-          height="400"
+          width="500"
+          height="500"
           viewBox="0 0 47.43 51.48"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -42,20 +42,6 @@ export default async function Image() {
             d="M40.48,50.73c-1.21,0-2.36-.74-2.81-1.95L23.71,11.54l-13.96,37.24c-.58,1.55-2.31,2.34-3.86,1.76-1.55-.58-2.34-2.31-1.76-3.86L20.9,1.95c.44-1.17,1.56-1.95,2.81-1.95s2.37.78,2.81,1.95l16.77,44.73c.58,1.55-.2,3.28-1.76,3.86-.35.13-.7.19-1.05.19Z"
           />
         </svg>
-
-        {/* Sadece isim - minimal */}
-        <div
-          style={{
-            display: 'flex',
-            fontSize: 80,
-            fontWeight: 'bold',
-            color: '#fff',
-            marginTop: 60,
-            letterSpacing: '-2px',
-          }}
-        >
-          Automexus
-        </div>
       </div>
     ),
     {
